@@ -1,0 +1,24 @@
+apiVersion: monitoring.coreos.com/v1
+kind: Prometheus
+metadata:
+  labels:
+    prometheus: aicoe-sre
+  name: aicoe-sre-prometheus
+  namespace: dh-psi-monitoring
+spec:
+  alerting:
+    alertmanagers:
+      - name: alertmanager-main
+        namespace: dh-psi-monitoring
+        port: web
+  replicas: 2
+  serviceAccountName: aicoe-prometheus
+  serviceMonitorNamespaceSelector:
+    matchLabels:
+      ticket: pnt0817437
+  serviceMonitorSelector:
+    matchLabels:
+      prometheus: aicoe-sre
+  podMonitorSelector:
+    matchLabels:
+      prometheus: aicoe-sre
