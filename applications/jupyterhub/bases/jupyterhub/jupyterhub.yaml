@@ -1,0 +1,58 @@
+apiVersion: opendatahub.io/v1alpha1
+kind: OpenDataHub
+metadata:
+  name: jupyterhub-opendatahub
+spec:
+  aicoe-jupyterhub:
+    jupyterhub_admins:
+      - acorvin
+      - mshah
+      - aasthana
+      - hveeradh
+      - hukhan
+      - gfrasca
+      - rmartine
+      - llasmith
+      - vpavlin
+    odh_deploy: True
+    s3_endpoint_url: https://s3.upshift.redhat.com
+    registry: "quay.io"
+    repository: "odh-jupyterhub"
+    jupyterhub_db_version: "9.5"
+    jupyterhub_configmap_name: jupyterhub-custom-cfg
+    notebook_images:
+      deploy_all_notebooks: True
+      deploy_cuda_notebooks: True
+    storage_class: null
+    db_memory: 1Gi
+    jupyterhub_memory: 1Gi
+    notebook_image: "s2i-minimal-notebook:3.6"
+    gpu_mode: "selinux"
+    # Name of the configmap that will be used when spawning a notebook for the single user
+    spark_configmap_template: 'jupyterhub-spark-operator-configmap'
+    # PYSPARK args to use in the notebook pod
+    # These submit args should be customized for the values passed for spark_memory and spark_cpu. You'll need to account for the available memory on the spark work nodes
+    spark_pyspark_submit_args: "--conf spark.cores.max=6 --conf spark.executor.instances=2 --conf spark.executor.memory=3G --conf spark.executor.cores=3 --conf spark.driver.memory=4G --packages com.amazonaws:aws-java-sdk:1.7.4,org.apache.hadoop:hadoop-aws:2.7.3 pyspark-shell"
+    spark_pyspark_driver_python: "jupyter"
+    spark_pyspark_driver_python_opts: "notebook"
+    spark_home: "/opt/app-root/lib/python3.6/site-packages/pyspark/"
+    spark_pythonpath: "$PYTHONPATH:/opt/app-root/lib/python3.6/site-packages/:/opt/app-root/lib/python3.6/site-packages/pyspark/python/:/opt/app-root/lib/python3.6/site-packages/pyspark/python/lib/py4j-0.8.2.1-src.zip"
+    spark_worker_nodes: 2
+    spark_master_nodes: 1
+    spark_memory: 4Gi
+    spark_cpu: 3
+    spark_image: "quay.io/opendatahub/spark-cluster-image:spark22python36"
+  spark-operator:
+    odh_deploy: True
+    master_node_count: 0
+    master_memory: 1Gi
+    master_cpu: 1
+    worker_node_count: 0
+    worker_memory: 2Gi
+    worker_cpu: 2
+  seldon:
+    odh_deploy: False
+  jupyter-on-openshift:
+    odh_deploy: False
+  monitoring:
+    odh_deploy: False
