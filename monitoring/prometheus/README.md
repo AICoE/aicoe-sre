@@ -45,7 +45,7 @@ oc create -f psi-ocp.yaml
     ```
 
 4. Make sure that the Prometheus CR has a label that matches a label for the target namespace:
-This namespace selector can be found at [psi-ocp.yaml](https://github.com/anishasthana/aicoe-sre/blob/master/monitoring/prometheus/psi-ocp.yaml#L16)
+This namespace selector can be found at [psi-ocp.yaml](https://github.com/AICoE/aicoe-sre/blob/master/monitoring/prometheus/psi-ocp.yaml#L16)
 
     ```yaml
     serviceMonitorNamespaceSelector:
