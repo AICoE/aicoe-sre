@@ -37,19 +37,54 @@ spec:
     spark_pyspark_driver_python_opts: "notebook"
     spark_home: "/opt/app-root/lib/python3.6/site-packages/pyspark/"
     spark_pythonpath: "$PYTHONPATH:/opt/app-root/lib/python3.6/site-packages/:/opt/app-root/lib/python3.6/site-packages/pyspark/python/:/opt/app-root/lib/python3.6/site-packages/pyspark/python/lib/py4j-0.8.2.1-src.zip"
-    spark_worker_nodes: 2
-    spark_master_nodes: 1
-    spark_memory: 4Gi
-    spark_cpu: 3
-    spark_image: "quay.io/opendatahub/spark-cluster-image:spark22python36"
+  spark:
+      # Spark image to use in the cluster
+      image: "quay.io/opendatahub/spark-cluster-image:spark22python36"
+      worker:
+        # Number of spark worker nodes
+        instances: 2
+        # Amount of cpu & memory resources to allocate to the each worker node in the cluster.
+        resources:
+          limits:
+            memory: 4Gi
+            cpu: 3
+          requests:
+            memory: 1Gi
+            cpu: 500m
+      master:
+        # Number of spark master nodes
+        instances: 1
+        # Amount of cpu & memory resources to allocate to the each node in the cluster.
+        resources:
+          limits:
+            memory: 4Gi
+            cpu: 1
+          requests:
+            memory: 1Gi
+            cpu: 500m
   spark-operator:
     odh_deploy: True
-    master_node_count: 0
-    master_memory: 1Gi
-    master_cpu: 1
-    worker_node_count: 0
-    worker_memory: 2Gi
-    worker_cpu: 2
+    operator_image: radanalyticsio/spark-operator:latest
+    spark_image: radanalyticsio/openshift-spark:latest
+    worker:
+      instances: 0
+      resources:
+        limits:
+          memory: 2Gi
+          cpu: 2
+        requests:
+          memory: 1Gi
+          cpu: 500m
+    master:
+      instances: 0
+      resources:
+        limits:
+          memory: 1i
+          cpu: 1
+        requests:
+          memory: 512Mi
+          cpu: 500m
+
   seldon:
     odh_deploy: False
   jupyter-on-openshift:
