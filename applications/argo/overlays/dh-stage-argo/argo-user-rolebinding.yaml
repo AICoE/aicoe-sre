@@ -1,0 +1,7 @@
+apiVersion: authorization.openshift.io/v1
+kind: RoleBinding
+metadata:
+  name: project-argo-users
+subjects:
+  - kind: Group
+    name: data-hub

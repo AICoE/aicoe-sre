@@ -1,0 +1,9 @@
+apiVersion: authorization.openshift.io/v1
+kind: RoleBinding
+metadata:
+  name: project-argo-events-users
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: argo-events-user
+subjects: []
