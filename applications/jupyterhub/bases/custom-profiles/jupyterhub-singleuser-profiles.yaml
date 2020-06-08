@@ -43,6 +43,9 @@ profiles:
     PYSPARK_DRIVER_PYTHON_OPTS: "notebook"
     SPARK_HOME: '/opt/app-root/lib/python3.6/site-packages/pyspark/'
     PYTHONPATH: '$PYTHONPATH:/opt/app-root/lib/python3.6/site-packages/:/opt/app-root/lib/python3.6/site-packages/pyspark/python/:/opt/app-root/lib/python3.6/site-packages/pyspark/python/lib/py4j-0.8.2.1-src.zip'
+  resources:
+    mem_limit: 2Gi
+    cpu_limit: 1
   services:
     spark:
       template: jupyterhub-spark-operator-configmap
