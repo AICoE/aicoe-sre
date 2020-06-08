@@ -1,0 +1,4 @@
+namespace: dh-psi-monitoring
+resources:
+- ../../bases/prometheus
+- ../../bases/servicemonitors
