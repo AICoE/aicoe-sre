@@ -14,6 +14,7 @@ spec:
       - rmartine
       - llasmith
       - vpavlin
+      - shgriffi
     odh_deploy: True
     s3_endpoint_url: https://s3.upshift.redhat.com
     registry: "quay.io"
