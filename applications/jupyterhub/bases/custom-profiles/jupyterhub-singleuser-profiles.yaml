@@ -25,6 +25,7 @@ profiles:
     - hveeradh
     - shanand
     - aduggal
+    - sbadhe
   resources:
     mem_limit: 32Gi
     cpu_limit: 4
