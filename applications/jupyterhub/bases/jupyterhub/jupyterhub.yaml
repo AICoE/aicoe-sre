@@ -19,7 +19,7 @@ spec:
     s3_endpoint_url: https://s3.upshift.redhat.com
     registry: "quay.io"
     repository: "odh-jupyterhub"
-    jupyterhub_img_tag: 3.0.7-df59c25
+    jupyterhub_img_tag: 3.0.7-cf600f3
     jupyterhub_db_version: "9.5"
     jupyterhub_configmap_name: jupyterhub-custom-cfg
     notebook_images:
