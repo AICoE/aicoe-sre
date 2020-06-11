@@ -206,7 +206,7 @@ spec:
     importPolicy:
       scheduled: true
     name: "latest"
-    
+
 ---
 apiVersion: image.openshift.io/v1
 kind: ImageStream
@@ -221,6 +221,25 @@ spec:
   - from:
       kind: DockerImage
       name: docker-registry.upshift.redhat.com/aicoe-notebooks/categorical-encoding:latest
+    importPolicy:
+      scheduled: true
+    name: "latest"
+
+# Thoth Data Sci Demo images
+---
+apiVersion: image.openshift.io/v1
+kind: ImageStream
+metadata:
+  labels:
+    opendatahub.io/notebook-image: "true"
+  name: s2i-dataset-notebook
+spec:
+  lookupPolicy:
+    local: true
+  tags:
+  - from:
+      kind: DockerImage
+      name: docker-registry.upshift.redhat.com/aicoe-notebooks/datasets:latest
     importPolicy:
       scheduled: true
     name: "latest"
