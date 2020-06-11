@@ -213,7 +213,7 @@ kind: ImageStream
 metadata:
   labels:
     opendatahub.io/notebook-image: "true"
-  name: s2i-categorical-encoding
+  name: s2i-categorical-encoding-notebook
 spec:
   lookupPolicy:
     local: false
