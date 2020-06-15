@@ -59,6 +59,42 @@ This namespace selector can be found at [psi-ocp.yaml](https://github.com/AICoE/
     oc get project <target_namespace> -o yaml
     ```
 
+## Alerting
+
+### Alertmanager Config
+
+The alertmanager deployment will fail unless there is a secret in the namespace called `alertmanager-<alertmanager_name>`.
+You can create this secret by running the following command:
+
+```bash
+kubectl create secret generic alertmanager-<alertmanager-name> --from-file=alertmanager.yaml
+```
+
+A `alertmanager.yaml` can look at the following:
+
+```yaml
+global:
+  smtp_smarthost: '<mail_server>'
+  smtp_from: '<alert_host_email>'
+  smtp_auth_username: 'bar'
+  smtp_auth_password: 'foo'
+  smtp_require_tls: false
+  resolve_timeout: 5m
+route:
+  group_by: ['job']
+  group_wait: 30s
+  group_interval: 5m
+  repeat_interval: 12h
+  receiver: 'developer-mails'
+receivers:
+- name: 'developer-mails'
+  email_configs:
+    - to: '<email_list>'
+      send_resolved: true
+```
+
+The following user-guide can be a good point of reference: [alerting.md](https://github.com/coreos/prometheus-operator/blob/master/Documentation/user-guides/alerting.md)
+
 ## Common issues
 
 ### Prometheus unable to detect pod/service monitors
