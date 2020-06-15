@@ -1,0 +1,12 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: alertmanager-route
+  namespace: dh-psi-monitoring
+spec:
+  path: /
+  to:
+    kind: Service
+    name: alertmanager-operated
+  port:
+    targetPort: 9093
