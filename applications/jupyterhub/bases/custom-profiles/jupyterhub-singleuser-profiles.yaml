@@ -30,6 +30,11 @@ profiles:
   resources:
     mem_limit: 32Gi
     cpu_limit: 4
+- name: Users with 16 GB RAM
+  users:
+    - esammons
+  resources:
+    mem_limit: 16Gi
 - name: Users with 32 GB
   users:
     - dmulford
