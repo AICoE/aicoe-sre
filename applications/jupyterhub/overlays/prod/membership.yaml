@@ -18,3 +18,5 @@ roleRef:
 subjects:
   - kind: 'Group'
     name: data-hub
+  - kind: 'User'
+    name: shanand
