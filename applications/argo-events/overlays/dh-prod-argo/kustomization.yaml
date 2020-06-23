@@ -6,6 +6,3 @@ namespace: dh-prod-argo
 resources:
   - ../../base
   - ./membership.yaml
-
-patchesStrategicMerge:
-  - argo-events-user-rolebinding.yaml

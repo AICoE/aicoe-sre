@@ -6,6 +6,3 @@ namespace: dh-stage-argo
 resources:
   - ../../base
   - ./membership.yaml
-
-patchesStrategicMerge:
-  - argo-user-rolebinding.yaml

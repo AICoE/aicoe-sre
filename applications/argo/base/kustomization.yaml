@@ -3,7 +3,6 @@ kind: Kustomization
 
 resources:
   - ./argo-user-role.yaml
-  - ./argo-user-rolebinding.yaml
   - ./default-sa-role.yaml
   - ./default-sa-rolebinding.yaml
   - github.com/argoproj/argo/manifests/namespace-install?ref=v2.8.1
