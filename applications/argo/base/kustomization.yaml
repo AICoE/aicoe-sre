@@ -5,4 +5,4 @@ resources:
   - ./argo-user-role.yaml
   - ./default-sa-role.yaml
   - ./default-sa-rolebinding.yaml
-  - github.com/argoproj/argo/manifests/namespace-install?ref=v2.8.1
+  - github.com/argoproj/argo/manifests/namespace-install?ref=v2.8.2
