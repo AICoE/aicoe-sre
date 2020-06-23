@@ -12,6 +12,8 @@ rules:
       - sensors/finalizers
       - eventsources
       - eventsources/finalizers
+      - eventbuses
+      - eventbuses/finalizers
     verbs:
       - create
       - delete

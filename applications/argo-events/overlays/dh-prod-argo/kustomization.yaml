@@ -6,3 +6,23 @@ namespace: dh-prod-argo
 resources:
   - ../../base
   - ./membership.yaml
+
+patchesJson6902:
+  - patch: |
+      - op: replace
+        path: /data/config
+        value: |
+          namespace: dh-prod-argo
+    target:
+      kind: ConfigMap
+      name: gateway-controller-configmap
+      version: v1
+  - patch: |
+      - op: replace
+        path: /data/config
+        value: |
+          namespace: dh-prod-argo
+    target:
+      kind: ConfigMap
+      name: sensor-controller-configmap
+      version: v1

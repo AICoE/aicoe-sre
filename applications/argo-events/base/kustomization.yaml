@@ -3,4 +3,4 @@ kind: Kustomization
 
 resources:
   - ./argo-events-user-role.yaml
-  - github.com/argoproj/argo-events/manifests/namespace-install?ref=v0.15.0
+  - github.com/argoproj/argo-events/manifests/namespace-install?ref=v0.16.0
