@@ -18,7 +18,7 @@ metadata:
 roleRef:
   name: view
 subjects:
-  - kind: 'Group'
+  - kind: 'SystemGroup'
     name: system:authenticated
 groupNames:
   - system:authenticated
