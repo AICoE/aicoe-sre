@@ -172,6 +172,25 @@ spec:
 
 # AIOps Data Sci Demo images
 
+---
+apiVersion: image.openshift.io/v1
+kind: ImageStream
+metadata:
+  labels:
+    opendatahub.io/notebook-image: "true" 
+  name: s2i-openshift-sme-mailing-list-analysis-notebook
+spec:
+  lookupPolicy:
+    local: true
+  tags:
+  - from:
+      kind: DockerImage
+      name: docker-registry.upshift.redhat.com/aicoe-notebooks/openshift-sme-mailing-list-analysis:latest
+    importPolicy:
+      scheduled: true
+    name: "latest"
+
+
 ## OCP4 Anomaly Detection Image from https://gitlab.cee.redhat.com/AICoE/ocp4
 ---
 apiVersion: image.openshift.io/v1
