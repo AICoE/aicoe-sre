@@ -7,7 +7,7 @@ roleRef:
   name: admin
 subjects:
   - kind: 'Group'
-    name: data-hub-admins
+    name: data-hub-openshift-admins
 ---
 apiVersion: authorization.openshift.io/v1
 kind: RoleBinding
@@ -17,6 +17,4 @@ roleRef:
   name: view
 subjects:
   - kind: 'Group'
-    name: data-hub
-  - kind: 'User'
-    name: shanand
+    name: system:authenticated
