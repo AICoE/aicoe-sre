@@ -1,0 +1,21 @@
+apiVersion: authorization.openshift.io/v1
+kind: RoleBinding
+metadata:
+  name: project-admins
+roleRef:
+  name: admin
+subjects:
+  - kind: Group
+    name: data-hub
+---
+apiVersion: authorization.openshift.io/v1
+kind: RoleBinding
+metadata:
+  name: project-argo-users
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: argo-user
+subjects:
+  - kind: Group
+    name: data-hub

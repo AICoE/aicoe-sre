@@ -1,0 +1,13 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+  - ./argo-user-role.yaml
+  - ./default-sa-role.yaml
+  - ./default-sa-rolebinding.yaml
+  - ./argo-server-route.yaml
+  - ./workflow-controller-metrics-route.yaml
+  - github.com/argoproj/argo/manifests/namespace-install?ref=v2.8.2
+
+patchesStrategicMerge:
+  - ./workflow-controller-configmap.yaml
