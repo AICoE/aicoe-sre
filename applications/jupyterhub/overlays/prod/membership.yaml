@@ -8,6 +8,8 @@ roleRef:
 subjects:
   - kind: 'Group'
     name: data-hub-openshift-admins
+groupNames:
+  - data-hub-openshift-admins
 ---
 apiVersion: authorization.openshift.io/v1
 kind: RoleBinding
@@ -18,3 +20,5 @@ roleRef:
 subjects:
   - kind: 'Group'
     name: system:authenticated
+groupNames:
+  - system:authenticated
