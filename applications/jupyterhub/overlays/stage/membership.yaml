@@ -7,5 +7,5 @@ roleRef:
   name: admin
 subjects:
   - kind: 'Group'
-    name: data-hub
+    name: data-hub-openshift-admins
     
