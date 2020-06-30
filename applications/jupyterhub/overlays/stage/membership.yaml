@@ -8,4 +8,5 @@ roleRef:
 subjects:
   - kind: 'Group'
     name: data-hub-openshift-admins
-    
+groupNames:
+  - data-hub-openshift-admins
