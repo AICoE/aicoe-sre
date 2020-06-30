@@ -3,6 +3,11 @@ kind: Kustomization
 
 namespace: dh-dev-argo
 
+commonLabels:
+  app.kubernetes.io/name: data-hub
+  app.kubernetes.io/component: argo-events
+  app.kubernetes.io/managed-by: aicoe-data-hub-argocd
+
 resources:
   - ../../base
 
