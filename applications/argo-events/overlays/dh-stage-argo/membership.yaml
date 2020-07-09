@@ -19,3 +19,14 @@ roleRef:
 subjects:
   - kind: Group
     name: data-hub
+---
+apiVersion: authorization.openshift.io/v1
+kind: RoleBinding
+metadata:
+  name: argocd-manager-rolebinding
+roleRef:
+  name: admin
+subjects:
+  - kind: ServiceAccount
+    name: argocd-manager
+    namespace: argocd-manager
