@@ -1,0 +1,34 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: aiops-prod-argo
+
+commonLabels:
+  app.kubernetes.io/name: argo-events
+  app.kubernetes.io/component: workflow-engine
+  app.kubernetes.io/part-of: aiops-analytics
+  app.kubernetes.io/managed-by: aicoe-aiops-devops-argocd
+
+resources:
+  - ../../base
+  - ./membership.yaml
+
+patchesJson6902:
+  - patch: |
+      - op: replace
+        path: /data/config
+        value: |
+          namespace: aiops-prod-argo
+    target:
+      kind: ConfigMap
+      name: gateway-controller-configmap
+      version: v1
+  - patch: |
+      - op: replace
+        path: /data/config
+        value: |
+          namespace: aiops-prod-argo
+    target:
+      kind: ConfigMap
+      name: sensor-controller-configmap
+      version: v1
